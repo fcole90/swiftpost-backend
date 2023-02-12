@@ -1,3 +1,7 @@
 {
+  "editor.codeActionsOnSave": [
+    "source.organizeImports",
+    "source.fixAll",
+  ],
   "eslint.workingDirectories": ["./nest"]
- }
+}
