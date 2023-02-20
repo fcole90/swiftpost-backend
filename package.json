@@ -8,5 +8,12 @@
     "install": "cd nest && yarn install",
     "start": "cd nest && yarn start",
     "build": "cd nest && yarn build"
+  },
+  "dependencies": {
+    "@nestjs/jwt": "^10.0.2",
+    "passport-jwt": "^4.0.1"
+  },
+  "devDependencies": {
+    "@types/passport-jwt": "^3.0.8"
   }
 }
