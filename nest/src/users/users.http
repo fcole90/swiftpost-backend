@@ -28,3 +28,15 @@ content-type: application/json
     "username": "user1",
     "password": "badpassword"
 }
+
+### 
+# ** Test **
+
+# Create user
+POST https://shy-tan-meerkat-garb.cyclic.app/signup HTTP/1.1
+content-type: application/json
+
+{
+    "username": "user1000",
+    "password": "password1"
+}

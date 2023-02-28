@@ -6,9 +6,10 @@ import { Connection } from 'mongoose';
 export class AppService {
   constructor(@InjectConnection() private connection: Connection) {
     console.log(
-      'Mongoose is ',
+      'Mongoose connection is',
       connection.readyState === 1 ? 'ready' : 'not ready',
     );
+    console.log('Mongoose host:', connection.host);
   }
 
   async waitConnectionReady() {
