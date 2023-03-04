@@ -5,12 +5,16 @@ import { AppModule } from './app.module';
 import { DBService } from './db/db.service';
 
 async function bootstrap() {
+  const app = await NestFactory.create(AppModule, {
+    logger: ['log', 'error', 'warn', 'debug', 'verbose'],
+  });
   const logger = new Logger('bootstrap');
+
   logger.log(`Starting on env: '${process.env.NODE_ENV}'`);
-  const app = await NestFactory.create(AppModule);
   await app.init();
-  const dbService: DBService = app.get(DBService);
+
   logger.log(`Waiting for database connection...`);
+  const dbService: DBService = app.get(DBService);
   while ((await dbService.isConnectionReady()) === false) {
     logger.log('Database connection not ready, waiting...');
     await new Promise((r) => setTimeout(r, 2000));
