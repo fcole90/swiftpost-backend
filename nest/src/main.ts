@@ -17,7 +17,7 @@ async function bootstrap() {
   const dbService: DBService = app.get(DBService);
   while ((await dbService.isConnectionReady()) === false) {
     logger.log('Database connection not ready, waiting...');
-    await new Promise((r) => setTimeout(r, 2000));
+    await new Promise((r) => setTimeout(r, 50));
   }
   logger.log(`Database connection ready`);
 
