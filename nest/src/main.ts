@@ -1,15 +1,24 @@
+import { Logger } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 
 import { AppModule } from './app.module';
-import { AppService } from './app.service';
+import { DBService } from './db/db.service';
 
-console.log(`Starting on env: '${process.env.NODE_ENV}'`);
 async function bootstrap() {
+  const logger = new Logger('bootstrap');
+  logger.log(`Starting on env: '${process.env.NODE_ENV}'`);
   const app = await NestFactory.create(AppModule);
   await app.init();
-  const appService: AppService = app.get(AppService);
-  await appService.waitConnectionReady();
-  console.log('Listen');
-  await app.listen(process.env.PORT ?? 3001);
+  const dbService: DBService = app.get(DBService);
+  logger.log(`Waiting for database connection...`);
+  while ((await dbService.isConnectionReady()) === false) {
+    logger.log('Database connection not ready, waiting...');
+    await new Promise((r) => setTimeout(r, 2000));
+  }
+  logger.log(`Database connection ready`);
+
+  const port = process.env.PORT ?? 3001;
+  logger.log(`Listening on port: ${port}`);
+  await app.listen(port);
 }
 bootstrap();
