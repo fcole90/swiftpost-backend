@@ -1,2 +1,7 @@
 # Just ping the main app
 http://localhost:3001
+
+###
+
+# Ping local with proxy
+api.local.fastforward.io

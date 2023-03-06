@@ -34,7 +34,7 @@ content-type: application/json
 
 # Create user
 POST https://shy-tan-meerkat-garb.cyclic.app/auth/signup HTTP/1.1
-content-type: application/json
+content-type: application/jsongit 
 
 {
     "username": "user1",
