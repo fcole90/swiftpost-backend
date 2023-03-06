@@ -33,10 +33,21 @@ content-type: application/json
 # ** Test **
 
 # Create user
-POST https://shy-tan-meerkat-garb.cyclic.app/signup HTTP/1.1
+POST https://shy-tan-meerkat-garb.cyclic.app/auth/signup HTTP/1.1
 content-type: application/json
 
 {
-    "username": "user1000",
+    "username": "user1",
+    "password": "password1"
+}
+
+###
+
+# Log-in
+POST https://shy-tan-meerkat-garb.cyclic.app/auth/login HTTP/1.1
+content-type: application/json
+
+{
+    "username": "user1",
     "password": "password1"
 }
