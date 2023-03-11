@@ -15,7 +15,7 @@ import { LocalStrategy } from './local.auth.service';
     PassportModule,
     JwtModule.register({
       secret: 'secretKey',
-      signOptions: { expiresIn: '60s' },
+      signOptions: { expiresIn: '60m' },
     }),
     MongooseModule.forFeature([{ name: 'user', schema: UserSchema }]),
   ],

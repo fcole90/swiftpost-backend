@@ -9,16 +9,18 @@ export class UsersService {
     @InjectModel('user') private readonly userModel: Model<UserDocument>,
   ) {}
 
-  async createUser(username: string, password: string): Promise<User> {
+  async createUser(username: string, password: string): Promise<void> {
     const user = await this.getUser({ username });
     if (user) {
       throw new BadRequestException('username already exists');
     }
 
-    return this.userModel.create({
+    this.userModel.create({
       username,
       password,
     });
+
+    return;
   }
 
   async getUser(query: object): Promise<User | null> {
