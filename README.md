@@ -1,8 +1,6 @@
-# Backend for fast-forward
+# Backend for SwiftPost
 
-<https://github.com/fcole90/fast-forward>
-
-Endpoint: <https://shy-tan-meerkat-garb.cyclic.app/>
+<https://swiftpostlab.github.io/>
 
 ## Local
 
