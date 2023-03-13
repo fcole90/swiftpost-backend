@@ -10,13 +10,14 @@ export class UsersController {
   async createUser(
     @Body('password') password: string,
     @Body('username') username: string,
+    @Body('email') email: string,
   ): Promise<void> {
-    if (username == null || password == null) {
-      throw new BadRequestException('Missing username or password');
+    if (username == null || password == null || email == null) {
+      throw new BadRequestException('Missing fields');
     }
     const saltOrRounds = 10;
     const hashedPassword = await bcrypt.hash(password, saltOrRounds);
-    await this.usersService.createUser(username, hashedPassword);
+    await this.usersService.createUser(username, email, hashedPassword);
 
     return;
   }

@@ -3,7 +3,8 @@ POST http://localhost:3001/auth/signup HTTP/1.1
 content-type: application/json
 
 {
-    "username": "user1",
+    "username": "user100",
+    "email": "user100@example.org",
     "password": "password1"
 }
 
@@ -14,7 +15,7 @@ POST http://localhost:3001/auth/login HTTP/1.1
 content-type: application/json
 
 {
-    "username": "user1",
+    "username": "user100@example.org",
     "password": "password1"
 }
 
